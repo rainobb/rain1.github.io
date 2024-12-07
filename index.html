@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Image with Snowflakes</title>
+  <style>
+    img {
+      height: auto;
+      max-width: 100%; /* 添加这行，确保图片宽度不会超出屏幕，更好地实现响应式 */
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+    }
+
+  .snowflake {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <img id="myImage" src="https://img-view-c-zb.drive.quark.cn/ih2hTsNg/6011541590/6754480ad68449241ed64361890140c9a0aaeb66/6754480a1a95f11bbcbb401ca9bc9744a1bb021b/preview?auth_key=1733597519-690-10800-fb5f08d92e1072d0e03703b1eaf32c52&sp=100&token=3-90ea2f71ec084519c379b430fbb5bdc1-0-3-1024-4a40ffd17fe34b15aef274ddf55675ce-0-0-0-0-5434c0947039c6b9c3f6d4ed5aba5679&ud=16-4-3-0-3-N-11-N-1-16-2-N" alt="A beautiful image">
+  <!-- 将图片id修改为myImage，并添加了src属性指向一个示例图片链接，你需要替换为真实有效的链接 -->
+  <script>
+    // 获取图片元素
+    var img = document.getElementById('myImage');
+
+    // 雪花飘落效果相关代码
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.style.left = Math.random() * window.innerWidth + 'px';
+      snowflake.style.animationDuration = Math.random() * 5 + 3 + 's';
+      snowflake.style.animationDelay = Math.random() * 10 + 's';
+      snowflake.style.opacity = Math.random();
+      document.body.appendChild(snowflake);
+      setTimeout(() => {
+        snowflake.remove();
+      }, 10000);
+    }
+
+    setInterval(createSnowflake, 300);
+  </script>
+</body>
+
+</html>
